@@ -1,8 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { CalculatorScreen } from './screens/CalculatorScreen';
-import { HistoryScreen } from './screens/HistoryScreen';
+
 import { TouchableOpacity, Text } from 'react-native';
+import { CalculatorScreen } from 'screens/CalculatorScreen';
+import { HistoryScreen } from 'screens/HistoryScreen';
 
 export const enum RootNavigationName {
   CALCULATOR = 'Calculator',
