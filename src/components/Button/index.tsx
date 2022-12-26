@@ -1,28 +1,28 @@
 import React, { FC } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-import { ButtonPropsType, buttonShape } from 'components/Button/type';
+import { ButtonPropsType, ButtonShape } from 'components/Button/type';
 import { styles } from 'components/Button/style';
 
-export const Button: FC<ButtonPropsType> = props => {
-  const { onPress, title, disabled, backgroundColor = 'grey', shape = buttonShape.SQUARE } = props;
+export const Button: FC<ButtonPropsType> = (props) => {
+    const { onPress, title, disabled, backgroundColor = 'grey', shape = ButtonShape.SQUARE } = props;
 
-  return (
-    <TouchableOpacity
-      disabled={disabled}
-      onPress={onPress}
-      activeOpacity={0.4}
-      style={[
-        styles.buttonContainer,
-        {
-          width: shape === buttonShape.SQUARE || shape === buttonShape.ROUND ? 60 : 140,
-          height: shape === buttonShape.ROUND ? 20 : 60,
-          backgroundColor:
-            shape === buttonShape.SQUARE || shape === buttonShape.RECTANGULAR ? backgroundColor : 'yellow',
-        },
-      ]}
-    >
-      <Text style={styles.buttonText}>{title}</Text>
-    </TouchableOpacity>
-  );
+    return (
+        <TouchableOpacity
+            disabled={disabled}
+            onPress={onPress}
+            activeOpacity={0.4}
+            style={[
+                styles.buttonContainer,
+                {
+                    width: shape === ButtonShape.SQUARE || shape === ButtonShape.ROUND ? 60 : 140,
+                    height: shape === ButtonShape.ROUND ? 20 : 60,
+                    backgroundColor:
+                        shape === ButtonShape.SQUARE || shape === ButtonShape.RECTANGULAR ? backgroundColor : 'yellow',
+                },
+            ]}
+        >
+            <Text style={styles.buttonText}>{title}</Text>
+        </TouchableOpacity>
+    );
 };
