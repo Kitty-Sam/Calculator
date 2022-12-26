@@ -43,6 +43,11 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-Calculator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Calculator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Calculator/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Calculator-CalculatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator-CalculatorTests.release.xcconfig"; path = "Target Support Files/Pods-Calculator-CalculatorTests/Pods-Calculator-CalculatorTests.release.xcconfig"; sourceTree = "<group>"; };
+		DB52A1CF2959EE7D0000A9F3 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		DB52A1D02959EE820000A9F3 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		DB52A1D12959EE890000A9F3 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		DB52A1D22959EE960000A9F3 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		DB52A1D32959EE9B0000A9F3 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -86,6 +91,7 @@
 		13B07FAE1A68108700A75B9A /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				DB52A1CE2959EE120000A9F3 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -146,6 +152,18 @@
 				89C6BE57DB24E9ADA2F236DE /* Pods-Calculator-CalculatorTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DB52A1CE2959EE120000A9F3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DB52A1D32959EE9B0000A9F3 /* MaterialIcons.ttf */,
+				DB52A1D22959EE960000A9F3 /* MaterialCommunityIcons.ttf */,
+				DB52A1D12959EE890000A9F3 /* FontAwesome.ttf */,
+				DB52A1D02959EE820000A9F3 /* Foundation.ttf */,
+				DB52A1CF2959EE7D0000A9F3 /* Ionicons.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

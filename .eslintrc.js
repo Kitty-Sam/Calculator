@@ -15,8 +15,9 @@ module.exports = {
             },
         },
     },
-    ignorePatterns: ['.eslintrc.js'],
+    ignorePatterns: ['.eslintrc.js', 'metro.config.js'],
     rules: {
         'import/no-named-as-default': 0,
     },
+    plugins: ['@typescript-eslint'],
 };

@@ -1,12 +1,14 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { CalculatorScreen } from 'screens/CalculatorScreen';
 import { HistoryScreen } from 'screens/HistoryScreen';
 
+import Icon from 'react-native-vector-icons/Ionicons';
+
 export const enum RootNavigationName {
-    CALCULATOR = 'Calculator',
+    CALCULATOR = 'Modeson Calculator',
     HISTORY = 'History',
 }
 
@@ -26,17 +28,29 @@ export const RootStack = () => {
                 options={({ navigation }) => ({
                     headerRight: () => (
                         <TouchableOpacity onPress={() => navigation.navigate(RootNavigationName.HISTORY)}>
-                            <Text>history</Text>
+                            <Icon name={'settings-outline'} size={24} />
                         </TouchableOpacity>
                     ),
+                    headerTitleAlign: 'left',
                 })}
             />
             <Root.Screen
                 name={RootNavigationName.HISTORY}
                 component={HistoryScreen}
-                options={{
+                options={({}) => ({
+                    headerRight: () => (
+                        <>
+                            <TouchableOpacity onPress={() => console.log('change theme')}>
+                                <Icon name={'moon-outline'} size={24} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => console.log('clear history')}>
+                                <Icon name={'trash-outline'} size={24} />
+                            </TouchableOpacity>
+                        </>
+                    ),
                     headerBackTitle: 'Back',
-                }}
+                    headerTitleAlign: 'left',
+                })}
             />
         </Root.Navigator>
     );
