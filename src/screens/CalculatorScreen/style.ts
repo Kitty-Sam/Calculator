@@ -1,11 +1,11 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 
 export type CalculatorScreenStyleType = {
-  rootContainer: ViewStyle;
+    rootContainer: ViewStyle;
 };
 
 export const styles = StyleSheet.create<CalculatorScreenStyleType>({
-  rootContainer: {
-    marginHorizontal: 48,
-  },
+    rootContainer: {
+        marginHorizontal: 48,
+    },
 });

@@ -1,5 +1,8 @@
 // prettier-ignore
 {
+  "exclude": [
+    "__tests__/**/*-test.ts"
+  ],
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
     "skipLibCheck": true,
