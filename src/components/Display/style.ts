@@ -6,7 +6,6 @@ export type DisplayStyleType = {
 
 export const styles = StyleSheet.create<DisplayStyleType>({
     container: {
-        height: '45%',
         alignItems: 'center',
         justifyContent: 'center',
     },

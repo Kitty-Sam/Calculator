@@ -1,93 +1,60 @@
 import React, { FC } from 'react';
-import { View } from 'react-native';
 
 import { Button } from 'components/Button';
-import { styles } from 'components/KeyPad/style';
-import { ButtonShape } from 'components/Button/type';
-
-let labels: string[][] = [
-    ['e', 'micro', 'sin', 'deg'],
-    ['Ac', 'del', '/', '*'],
-    ['7', '8', '9', '-'],
-    ['4', '5', '6', '+'],
-    ['1', '2', '3'],
-    ['0', '.', '='],
-];
+import { Row } from 'components/Row';
+import { calculate } from 'utils/Calculate/calculate';
+import { View } from 'react-native';
 export type KeyPadType = {
-    // setItem: (item: string) => string;
-    setItem: any;
+    // setState: () => void;
+    setState: any;
 };
 
-export const KeyPad: FC<KeyPadType> = ({ setItem }) => {
-    const onPressHandler = (item: string) => {
-        setItem((prev: string) => prev + item);
+export const KeyPad: FC<KeyPadType> = ({ setState }) => {
+    const onPressHandler = (type: string, value: string | number | null) => {
+        setState((state: string) => calculate(type, value, state));
     };
 
     return (
-        <>
-            {labels.map((row, index) => {
-                return (
-                    <React.Fragment key={row[1]}>
-                        {index === 4 ? (
-                            <View key={row[1]} style={[styles.buttonsContainer, { width: '74%' }]}>
-                                {row.map((item) => {
-                                    return (
-                                        <Button
-                                            shape={ButtonShape.SQUARE}
-                                            onPress={() => onPressHandler(item)}
-                                            title={item}
-                                            key={item}
-                                        />
-                                    );
-                                })}
-                            </View>
-                        ) : (
-                            <View key={row[1]} style={styles.buttonsContainer}>
-                                {row.map((item) => {
-                                    if (index === 0) {
-                                        return (
-                                            <Button
-                                                shape={ButtonShape.ROUND}
-                                                onPress={() => onPressHandler(item)}
-                                                title={item}
-                                                key={item}
-                                            />
-                                        );
-                                    }
-                                    if (item === '+' || item === '=') {
-                                        return (
-                                            <Button
-                                                shape={ButtonShape.SQUARE}
-                                                onPress={() => onPressHandler(item)}
-                                                title={item}
-                                                key={item}
-                                            />
-                                        );
-                                    }
-                                    if (item === '0') {
-                                        return (
-                                            <Button
-                                                shape={ButtonShape.RECTANGULAR}
-                                                onPress={() => console.log(item)}
-                                                title={item}
-                                                key={item}
-                                            />
-                                        );
-                                    }
-                                    return (
-                                        <Button
-                                            shape={ButtonShape.SQUARE}
-                                            onPress={() => onPressHandler(item)}
-                                            title={item}
-                                            key={item}
-                                        />
-                                    );
-                                })}
-                            </View>
-                        )}
-                    </React.Fragment>
-                );
-            })}
-        </>
+        <View>
+            <Row>
+                <Button text="+/-" appearance="primary" onPress={() => onPressHandler('change_operator', null)} />
+                <Button text="(" appearance="primary" onPress={() => onPressHandler('bracket_open', null)} />
+                <Button text=")" appearance="primary" onPress={() => onPressHandler('bracket_close', null)} />
+                <Button text="%" appearance="primary" onPress={() => onPressHandler('percent', null)} />
+            </Row>
+
+            <Row>
+                <Button text="Ac" appearance="secondary" onPress={() => onPressHandler('clean', null)} />
+                <Button text="del" appearance="secondary" onPress={() => onPressHandler('delete', null)} />
+                <Button text="/" appearance="accent" onPress={() => onPressHandler('operator', '/')} />
+                <Button text="*" appearance="accent" onPress={() => onPressHandler('operator', '*')} />
+            </Row>
+
+            <Row>
+                <Button text="7" appearance="primary" onPress={() => onPressHandler('number', 7)} />
+                <Button text="8" appearance="primary" onPress={() => onPressHandler('number', 8)} />
+                <Button text="9" appearance="primary" onPress={() => onPressHandler('number', 9)} />
+                <Button text="-" appearance="accent" onPress={() => onPressHandler('operator', '-')} />
+            </Row>
+
+            <Row>
+                <Button text="4" appearance="primary" onPress={() => onPressHandler('number', 4)} />
+                <Button text="5" appearance="primary" onPress={() => onPressHandler('number', 5)} />
+                <Button text="6" appearance="primary" onPress={() => onPressHandler('number', 6)} />
+                <Button text="+" appearance="accent" onPress={() => onPressHandler('operator', '+')} />
+            </Row>
+
+            <Row>
+                <Button text="1" appearance="primary" onPress={() => onPressHandler('number', 1)} />
+                <Button text="2" appearance="primary" onPress={() => onPressHandler('number', 2)} />
+                <Button text="3" appearance="primary" onPress={() => onPressHandler('number', 3)} />
+            </Row>
+
+            <Row>
+                <Button text="0" appearance="primary" onPress={() => onPressHandler('number', 0)} />
+                <Button text="." appearance="primary" onPress={() => onPressHandler('number', '.')} />
+                <Button text="=" appearance="secondary" onPress={() => onPressHandler('equal', '=')} />
+            </Row>
+        </View>
     );
 };

@@ -6,5 +6,5 @@ import { RootNavigationName, RootStackParamList } from 'navigation/RootStack';
 export type HistoryScreenPropsType = StackScreenNavigationProps<RootNavigationName.HISTORY, RootStackParamList>;
 
 export const HistoryScreen: FC<HistoryScreenPropsType> = () => {
-    return <Text>History</Text>;
+    return <Text style={{ color: 'red' }}>History</Text>;
 };
