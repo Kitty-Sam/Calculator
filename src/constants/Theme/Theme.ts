@@ -1,19 +1,23 @@
-//colors for dark theme
+export const DarkTheme = {
+    dark: true,
+    colors: {
+        primary: '#1991ff',
+        background: '#17181a',
+        card: '#17181a',
+        text: '#ffffff',
+        border: '#ade2ff',
+        notification: '#303136',
+    },
+};
 
-export enum DarkTheme {
-    textColor = '#1991ff',
-    accentTextColor = '#ade2ff',
-    primaryButtonsBackground = '#303136',
-    secondaryButtonsBackground = '#616161',
-    accentButtonsBackground = '#1991ff',
-    background = '#17181a',
-}
-
-export enum LightTheme {
-    textColor = '#1991ff',
-    accentTextColor = '#ade2ff',
-    primaryButtonsBackground = '#fbfbfd',
-    secondaryButtonsBackground = '#1991ff',
-    accentButtonsBackground = '#ade2ff',
-    background = '#f7f8fb',
-}
+export const LightTheme = {
+    dark: false,
+    colors: {
+        primary: '#ade2ff',
+        background: '#ffffff',
+        card: '#ffffff',
+        text: '#17181a',
+        border: '#1991ff',
+        notification: '#fbfbfd',
+    },
+};

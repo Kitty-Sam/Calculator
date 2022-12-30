@@ -5,5 +5,5 @@ export type HeaderStyleType = {
 };
 
 export const styles = StyleSheet.create<HeaderStyleType>({
-    headerText: { fontSize: 16, fontWeight: '400' },
+    headerText: { fontSize: 16, fontWeight: '500' },
 });

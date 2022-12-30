@@ -19,13 +19,13 @@ export const KeyPad: FC<KeyPadType> = () => {
         <View style={styles.rootContainer}>
             <Row>
                 <View style={styles.leftButtonsContainer}>
-                    {leftButtonsLabels.map(({ title, shape }) => (
-                        <Button key={title} title={title} shape={shape} onPress={onPressHandler(title)} />
+                    {leftButtonsLabels.map(({ title, shape, type }) => (
+                        <Button key={title} title={title} shape={shape} onPress={onPressHandler(title)} type={type} />
                     ))}
                 </View>
                 <Column>
-                    {rightButtonsLabels.map(({ title, shape }) => (
-                        <Button key={title} title={title} shape={shape} onPress={onPressHandler(title)} />
+                    {rightButtonsLabels.map(({ title, shape, type }) => (
+                        <Button key={title} title={title} shape={shape} onPress={onPressHandler(title)} type={type} />
                     ))}
                 </Column>
             </Row>
