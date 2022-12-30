@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Text } from 'react-native';
-import { StackScreenNavigationProps } from 'navigation/type';
-import { RootNavigationName, RootStackParamList } from 'navigation/RootStack';
+import { StackScreenNavigationProps } from '~navigation/type';
+import { RootNavigationName, RootStackParamList } from '~navigation/RootStack';
 
 export type HistoryScreenPropsType = StackScreenNavigationProps<RootNavigationName.HISTORY, RootStackParamList>;
 

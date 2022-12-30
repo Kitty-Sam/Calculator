@@ -7,5 +7,7 @@ export type RowStyleType = {
 export const styles = StyleSheet.create<RowStyleType>({
     container: {
         flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
     },
 });

@@ -1,22 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { View } from 'react-native';
+import { initialState } from '~utils/Calculate/calculate';
+import { styles } from './style';
+import { Display } from '~components/Display';
+import { KeyPad } from '~components/KeyPad';
 
-import { KeyPad } from 'components/KeyPad';
+export const CalculatorCCScreen = () => {
+    const [state, setState] = useState(initialState);
 
-import { styles } from 'screens/CalculatorCCScreen/style';
-
-export class CalculatorCCScreen extends React.Component {
-    constructor(props: any) {
-        super(props);
-        this.state = { value: '', operator: '', nextValue: '', isEqual: false };
-    }
-
-    render() {
-        return (
-            <View style={[styles.rootContainer]}>
-                <View style={{ height: 300 }} />
-                <KeyPad setState={this.setState} />
-            </View>
-        );
-    }
-}
+    return (
+        <View style={styles.rootContainer}>
+            <Display state={state} />
+            <KeyPad setState={setState} />
+        </View>
+    );
+};

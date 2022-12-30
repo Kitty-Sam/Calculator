@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { TouchableOpacity } from 'react-native';
-import { HistoryScreen } from 'screens/HistoryScreen';
+import { HistoryScreen } from '~screens/HistoryScreen';
 
 import Icon from 'react-native-vector-icons/Ionicons';
-import { ThemeContext } from 'utils/ThemeContext/ThemeContext';
-import { DarkTheme, LightTheme } from 'constants/Theme/Theme';
-import { CalculatorStack } from 'navigation/CalculatorStack';
+import { ThemeContext } from '~context/ThemeContext';
+import { DarkTheme, LightTheme } from '~constants/Theme/Theme';
+import { CalculatorStack } from '~navigation/CalculatorStack';
 
 export const enum RootNavigationName {
-    CALCULATOR_STACK = 'Modsen Calculator',
+    CALCULATOR_STACK = 'Calculator',
     HISTORY = 'History',
 }
 

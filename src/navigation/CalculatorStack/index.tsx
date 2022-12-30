@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { ThemeContext } from 'utils/ThemeContext/ThemeContext';
-import { DarkTheme, LightTheme } from 'constants/Theme/Theme';
-import { CalculatorFCScreen } from 'screens/CalculatorFCScreen';
-import { CalculatorCCScreen } from 'screens/CalculatorCCScreen';
+import { ThemeContext } from '~context/ThemeContext';
+import { DarkTheme, LightTheme } from '~constants/Theme/Theme';
+import { CalculatorFCScreen } from '~screens/CalculatorFCScreen';
+import { CalculatorCCScreen } from '~screens/CalculatorCCScreen';
 
 export const enum CalculatorNavigationName {
     CALCULATOR_FC = 'Calculator FC',

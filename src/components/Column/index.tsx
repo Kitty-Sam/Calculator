@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { View } from 'react-native';
-import { styles } from '~components/Row/style';
+import { styles } from '~components/Column/style';
 
-export type RowPropsType = {
+export type ColumnPropsType = {
     children: any;
 };
 
-export const Row: FC<RowPropsType> = ({ children }) => {
+export const Column: FC<ColumnPropsType> = ({ children }) => {
     return <View style={styles.container}>{children}</View>;
 };

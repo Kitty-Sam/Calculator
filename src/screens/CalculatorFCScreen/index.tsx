@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 import { View } from 'react-native';
-import { initialState } from 'utils/Calculate/calculate';
+import { initialState } from '~utils/Calculate/calculate';
 import { styles } from './style';
-import { Display } from 'components/Display';
-import { KeyPad } from 'components/KeyPad';
+import { Display } from '~components/Display';
+import { KeyPad } from '~components/KeyPad';
 
 export const CalculatorFCScreen = () => {
     const [state, setState] = useState(initialState);

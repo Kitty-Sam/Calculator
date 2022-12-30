@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Text, View } from 'react-native';
 
-import { styles } from 'components/Display/style';
-import { ErrorBoundary } from 'components/ErrorBoundary';
+import { styles } from '~components/Display/style';
+import { ErrorBoundary } from '~components/ErrorBoundary';
 
 export type DisplayPropsType = {
     state: {
@@ -36,8 +36,10 @@ export const Display: FC<DisplayPropsType> = ({ state }) => {
     return (
         <ErrorBoundary>
             <View style={styles.container}>
-                <Text>{state.value + state.operator + state.nextValue}</Text>
-                <Text>{previewDisplayResult(state.operator, Number(state.value), Number(state.nextValue))}</Text>
+                <Text style={{ color: 'red', fontSize: 16 }}>{state.value + state.operator + state.nextValue}</Text>
+                <Text style={{ color: 'red', fontSize: 16 }}>
+                    {previewDisplayResult(state.operator, Number(state.value), Number(state.nextValue))}
+                </Text>
             </View>
         </ErrorBoundary>
     );

@@ -1,48 +1,34 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-import { ButtonPropsType } from 'components/Button/type';
-import { styles } from 'components/Button/style';
-import { ThemeContext } from 'utils/ThemeContext/ThemeContext';
+import { ButtonPropsType } from '~components/Button/type';
+import { styles } from '~components/Button/style';
 
-export const Button: FC<ButtonPropsType> = ({ onPress, text, size, appearance }) => {
-    const { theme } = useContext(ThemeContext);
-
-    const buttonContainerStyles = [styles.buttonContainer];
-    const textStyles = [styles.buttonText];
-
-    if (size === 'wide') {
-        buttonContainerStyles.push(styles.buttonWide);
-    }
-    if (size === 'tall') {
-        buttonContainerStyles.push(styles.buttonTall);
-    }
-
-    if (theme === 'light') {
-        if (appearance === 'secondary') {
-            buttonContainerStyles.push(styles.buttonSecondary);
-            textStyles.push(styles.textSecondary);
+export const Button: FC<ButtonPropsType> = ({ onPress, title, shape }) => {
+    const resultedHeight = () => {
+        switch (shape) {
+            case 'tall':
+                return 95;
+            case 'small':
+                return 40;
+            default:
+                return 60;
         }
-        if (appearance === 'accent') {
-            buttonContainerStyles.push(styles.buttonAccent);
-        }
-    } else {
-        if (appearance === 'primary') {
-            buttonContainerStyles.push(styles.buttonDarkContainer);
-        }
-        if (appearance === 'secondary') {
-            buttonContainerStyles.push(styles.buttonDarkSecondary);
-            textStyles.push(styles.buttonText);
-        }
-        if (appearance === 'accent') {
-            buttonContainerStyles.push(styles.buttonDarkAccent);
-            textStyles.push(styles.textDarkSecondary);
-        }
-    }
+    };
 
     return (
-        <TouchableOpacity onPress={onPress} style={buttonContainerStyles}>
-            <Text style={textStyles}>{text}</Text>
+        <TouchableOpacity
+            onPress={onPress}
+            style={[
+                styles.buttonContainer,
+                {
+                    width: shape === 'wide' ? 145 : 60,
+                    height: resultedHeight(),
+                    borderRadius: shape === 'small' ? 20 : 10,
+                },
+            ]}
+        >
+            <Text style={styles.buttonText}>{title}</Text>
         </TouchableOpacity>
     );
 };
