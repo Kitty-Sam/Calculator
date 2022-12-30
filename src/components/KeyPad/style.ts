@@ -1,13 +1,16 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 
 export type KeyPadStyleType = {
-    buttonsContainer: ViewStyle;
+    rootContainer: ViewStyle;
+    leftButtonsContainer: ViewStyle;
 };
 
 export const styles = StyleSheet.create<KeyPadStyleType>({
-    buttonsContainer: {
+    rootContainer: { alignItems: 'center' },
+    leftButtonsContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
+        width: 250,
     },
 });

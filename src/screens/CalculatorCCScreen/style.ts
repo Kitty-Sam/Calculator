@@ -6,6 +6,6 @@ export type CalculatorScreenStyleType = {
 
 export const styles = StyleSheet.create<CalculatorScreenStyleType>({
     rootContainer: {
-        marginHorizontal: 48,
+        marginHorizontal: 24,
     },
 });

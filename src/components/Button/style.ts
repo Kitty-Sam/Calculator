@@ -7,10 +7,12 @@ type ButtonStyleType = {
 
 export const styles = StyleSheet.create<ButtonStyleType>({
     buttonContainer: {
-        justifyContent: 'center',
+        margin: 4,
         alignItems: 'center',
-        borderRadius: 10,
-        marginVertical: 4,
+        justifyContent: 'center',
     },
-    buttonText: {},
+    buttonText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+    },
 });

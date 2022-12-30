@@ -1,55 +1,57 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { TouchableOpacity } from 'react-native';
-import { CalculatorScreen } from 'screens/CalculatorScreen';
-import { HistoryScreen } from 'screens/HistoryScreen';
-
 import Icon from 'react-native-vector-icons/Ionicons';
+import { CalculatorStack } from '~navigation/CalculatorStack';
+import { HistoryStack } from '~navigation/HistoryStack';
+import { Header } from '~components/Header/Header';
+import { ThemeContext } from '~context/ThemeContext';
+import { useTheme } from '@react-navigation/native';
 
 export const enum RootNavigationName {
-    CALCULATOR = 'Modeson Calculator',
-    HISTORY = 'History',
+    CALCULATOR_STACK = 'Calculator',
+    HISTORY_STACK = 'History',
 }
 
 export type RootStackParamList = {
-    [RootNavigationName.CALCULATOR]: undefined;
-    [RootNavigationName.HISTORY]: undefined;
+    [RootNavigationName.CALCULATOR_STACK]: undefined;
+    [RootNavigationName.HISTORY_STACK]: undefined;
 };
 
 const Root = createNativeStackNavigator<RootStackParamList>();
 
 export const RootStack = () => {
+    const { toggleTheme } = useContext(ThemeContext);
+    const { colors } = useTheme();
+
     return (
         <Root.Navigator>
             <Root.Screen
-                name={RootNavigationName.CALCULATOR}
-                component={CalculatorScreen}
+                name={RootNavigationName.CALCULATOR_STACK}
+                component={CalculatorStack}
                 options={({ navigation }) => ({
                     headerRight: () => (
-                        <TouchableOpacity onPress={() => navigation.navigate(RootNavigationName.HISTORY)}>
-                            <Icon name={'settings-outline'} size={24} />
-                        </TouchableOpacity>
+                        <Icon
+                            name={'list'}
+                            size={24}
+                            color={colors.text}
+                            onPress={() => navigation.navigate(RootNavigationName.HISTORY_STACK)}
+                        />
                     ),
-                    headerTitleAlign: 'left',
+                    headerTitleAlign: 'center',
+                    headerTitle: () => <Header header={'Calculator'} />,
                 })}
             />
             <Root.Screen
-                name={RootNavigationName.HISTORY}
-                component={HistoryScreen}
+                name={RootNavigationName.HISTORY_STACK}
+                component={HistoryStack}
                 options={({}) => ({
                     headerRight: () => (
-                        <>
-                            <TouchableOpacity onPress={() => console.log('change theme')}>
-                                <Icon name={'moon-outline'} size={24} />
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => console.log('clear history')}>
-                                <Icon name={'trash-outline'} size={24} />
-                            </TouchableOpacity>
-                        </>
+                        <Icon name={'moon-outline'} size={24} onPress={toggleTheme} color={colors.text} />
                     ),
-                    headerBackTitle: 'Back',
-                    headerTitleAlign: 'left',
+                    headerBackTitle: '',
+                    headerTitleAlign: 'center',
+                    headerTitle: () => <Header header={'History'} />,
                 })}
             />
         </Root.Navigator>

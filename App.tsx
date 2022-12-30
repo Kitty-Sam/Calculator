@@ -1,29 +1,27 @@
-import React from 'react';
-import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
-
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import React, { useState } from 'react';
+import { StatusBar, View } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { RootStack } from 'navigation/RootStack';
+import { RootStack } from '~navigation/RootStack';
+import { DarkTheme, LightTheme } from '~constants/Theme/Theme';
+import { ThemeContext, THEMES } from '~context/ThemeContext';
 
 const App = () => {
-    const isDarkMode = useColorScheme() === 'dark';
+    const [theme, setTheme] = useState(THEMES.light);
 
-    const backgroundStyle = {
-        backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-        flex: 1,
+    const toggleTheme = () => {
+        setTheme(theme === THEMES.dark ? THEMES.light : THEMES.dark);
     };
 
     return (
-        <NavigationContainer>
-            <SafeAreaView style={backgroundStyle}>
-                <StatusBar
-                    barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-                    backgroundColor={backgroundStyle.backgroundColor}
-                />
-                <RootStack />
-            </SafeAreaView>
-        </NavigationContainer>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <NavigationContainer theme={theme === THEMES.light ? LightTheme : DarkTheme}>
+                <View style={{ flex: 1 }}>
+                    <StatusBar />
+                    <RootStack />
+                </View>
+            </NavigationContainer>
+        </ThemeContext.Provider>
     );
 };
 

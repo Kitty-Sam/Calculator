@@ -18,6 +18,8 @@ module.exports = {
     ignorePatterns: ['.eslintrc.js', 'metro.config.js'],
     rules: {
         'import/no-named-as-default': 0,
+        'import/no-unresolved': 'off',
+        'import/extensions': 'off'
     },
     plugins: ['@typescript-eslint'],
 };
