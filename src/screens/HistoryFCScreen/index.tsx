@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Platform, ScrollView, Text } from 'react-native';
 import { FAB } from 'react-native-paper';
 import { styles } from '~screens/HistoryFCScreen/style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '@react-navigation/native';
+import { HistoryContext } from '~context/HistoryContext';
 
 export const HistoryFCScreen = () => {
-    const [history, setHistory] = useState([]);
     const { colors } = useTheme();
+    const { history, setHistory } = useContext(HistoryContext);
 
     const getHistory = async () => {
         try {

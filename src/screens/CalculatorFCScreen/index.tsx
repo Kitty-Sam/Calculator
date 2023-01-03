@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 
 import { Alert, View } from 'react-native';
 import { styles } from './style';
@@ -6,12 +6,14 @@ import { Display } from '~components/Display';
 import { KeyPad } from '~components/KeyPad';
 import { calculateInputData, evalForInput } from '~utils/Calculate/calculate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { HistoryContext } from '~context/HistoryContext';
 
 export const CalculatorFCScreen = () => {
     const [input, setInput] = useState('');
     const [isEqual, setIsEqual] = useState(false);
     const [result, setResult] = useState('');
-    const [history, setHistory] = useState<string[]>([]);
+
+    const { history, setHistory } = useContext(HistoryContext);
 
     const getHistory = async () => {
         try {
@@ -68,11 +70,7 @@ export const CalculatorFCScreen = () => {
                         setIsEqual(true);
                         try {
                             setResult(calculateInputData(evalForInput(input)));
-                            let unique = [
-                                ...new Set(history.concat([input + '=' + calculateInputData(evalForInput(input))])),
-                            ];
-                            setHistory(unique);
-                            // setHistory(history.concat([input + '=' + calculateInputData(evalForInput(input))]));
+                            setHistory(history.concat([input + '=' + calculateInputData(evalForInput(input))]));
                             setInput(calculateInputData(evalForInput(input)));
                         } catch (error: any) {
                             Alert.alert(error.message);
