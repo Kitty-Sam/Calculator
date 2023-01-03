@@ -13,6 +13,6 @@ export const styles = StyleSheet.create<ButtonStyleType>({
     },
     buttonText: {
         fontSize: 24,
-        fontWeight: 'bold',
+        fontWeight: '400',
     },
 });

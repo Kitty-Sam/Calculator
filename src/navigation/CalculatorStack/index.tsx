@@ -22,7 +22,7 @@ export const CalculatorStack = () => {
     return (
         <Calculator.Navigator
             sceneContainerStyle={{
-                backgroundColor: theme === 'light' ? LightTheme.background : DarkTheme.background,
+                backgroundColor: theme === 'light' ? LightTheme.colors.background : DarkTheme.colors.background,
             }}
         >
             <Calculator.Screen name={CalculatorNavigationName.CALCULATOR_FC} component={CalculatorFCScreen} />
