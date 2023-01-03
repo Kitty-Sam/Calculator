@@ -22,7 +22,7 @@ export const HistoryStack = () => {
     return (
         <History.Navigator
             sceneContainerStyle={{
-                backgroundColor: theme === 'light' ? LightTheme.background : DarkTheme.background,
+                backgroundColor: theme === 'light' ? LightTheme.colors.background : DarkTheme.colors.background,
             }}
         >
             <History.Screen name={HistoryNavigationName.HISTORY_FC} component={HistoryFCScreen} />
