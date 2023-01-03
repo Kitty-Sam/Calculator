@@ -7,25 +7,33 @@ import { styles } from './style';
 import { Button } from '~components/Button';
 
 export type KeyPadType = {
-    setState: any;
+    onPressHandler: any;
 };
 
-export const KeyPad: FC<KeyPadType> = () => {
-    const onPressHandler = (title: string) => () => {
-        console.log(title);
-    };
-
+export const KeyPad: FC<KeyPadType> = ({ onPressHandler }) => {
     return (
         <View style={styles.rootContainer}>
             <Row>
                 <View style={styles.leftButtonsContainer}>
                     {leftButtonsLabels.map(({ title, shape, type }) => (
-                        <Button key={title} title={title} shape={shape} onPress={onPressHandler(title)} type={type} />
+                        <Button
+                            key={title}
+                            title={title}
+                            shape={shape}
+                            onPress={() => onPressHandler(title)}
+                            type={type}
+                        />
                     ))}
                 </View>
                 <Column>
                     {rightButtonsLabels.map(({ title, shape, type }) => (
-                        <Button key={title} title={title} shape={shape} onPress={onPressHandler(title)} type={type} />
+                        <Button
+                            key={title}
+                            title={title}
+                            shape={shape}
+                            onPress={() => onPressHandler(title)}
+                            type={type}
+                        />
                     ))}
                 </Column>
             </Row>

@@ -3,43 +3,25 @@ import { Text, View } from 'react-native';
 
 import { styles } from '~components/Display/style';
 import { ErrorBoundary } from '~components/ErrorBoundary';
+import { useTheme } from '@react-navigation/native';
 
 export type DisplayPropsType = {
-    state: {
-        value: string;
-        nextValue: string;
-        operator: string;
-    };
+    input: string;
+    result: string;
+    isEqual: boolean;
 };
 
-const previewDisplayResult = (operator: string, operand: number, nextOperand: number) => {
-    if (!operand) {
-        return;
-    }
-    if (!nextOperand) {
-        return operand + operator;
-    }
-
-    switch (operator) {
-        case '+':
-            return operand + nextOperand;
-        case '-':
-            return operand - nextOperand;
-        case '*':
-            return operand * nextOperand;
-        case '/':
-            return operand / nextOperand;
-    }
-};
-
-export const Display: FC<DisplayPropsType> = ({ state }) => {
+export const Display: FC<DisplayPropsType> = ({ input, result, isEqual }) => {
+    const { colors } = useTheme();
     return (
         <ErrorBoundary>
             <View style={styles.container}>
-                <Text style={{ color: 'red', fontSize: 16 }}>{state.value + state.operator + state.nextValue}</Text>
-                <Text style={{ color: 'red', fontSize: 16 }}>
-                    {previewDisplayResult(state.operator, Number(state.value), Number(state.nextValue))}
-                </Text>
+                {!isEqual && isEqual !== undefined ? (
+                    <Text style={[styles.text, { color: colors.border }]}>{input}</Text>
+                ) : (
+                    <></>
+                )}
+                {!input ? <Text style={[styles.text, { color: colors.border }]}>{result}</Text> : <></>}
             </View>
         </ErrorBoundary>
     );

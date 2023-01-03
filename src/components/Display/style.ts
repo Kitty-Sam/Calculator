@@ -1,7 +1,8 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export type DisplayStyleType = {
     container: ViewStyle;
+    text: TextStyle;
 };
 
 export const styles = StyleSheet.create<DisplayStyleType>({
@@ -9,5 +10,8 @@ export const styles = StyleSheet.create<DisplayStyleType>({
         height: '39%',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    text: {
+        fontSize: 24,
     },
 });
