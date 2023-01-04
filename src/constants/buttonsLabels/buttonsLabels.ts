@@ -25,3 +25,5 @@ export const rightButtonsLabels = [
     { title: '+', shape: 'tall', type: 'operator' },
     { title: '=', shape: 'tall', type: 'operator' },
 ];
+
+export const specialButtons = ['Ac', 'del', '+/-', '%'];
