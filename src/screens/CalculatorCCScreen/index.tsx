@@ -13,6 +13,7 @@ export type CalculatorStateType = {
     input: string;
     result: string;
     isEqual: boolean;
+    history: string[];
 };
 
 export type CalculatorCCScreenPropsType = {};
@@ -20,11 +21,11 @@ export type CalculatorCCScreenPropsType = {};
 export default class CalculatorCCScreen extends React.Component<CalculatorCCScreenPropsType, CalculatorStateType> {
     constructor(props: CalculatorCCScreenPropsType) {
         super(props);
-        // let { history, setHistory } = this.context;
         this.state = {
             input: '',
             result: '',
             isEqual: false,
+            history: [],
         };
     }
 
@@ -41,20 +42,24 @@ export default class CalculatorCCScreen extends React.Component<CalculatorCCScre
             const savedHistory = await AsyncStorage.getItem('history');
             if (savedHistory) {
                 const resultedHistory = await JSON.parse(savedHistory);
-                // this.setState({ ...this.state, history: resultedHistory });
-                // setHistory(resultedHistory);
+                this.setState({ ...this.state, history: resultedHistory });
             }
         } catch (error) {
             console.log(error);
         }
     };
 
-    componentDidMount() {}
+    componentDidMount() {
+        this.getHistory();
+        this.setState({ ...this.state, isEqual: false });
+    }
 
-    componentDidUpdate() {}
+    componentDidUpdate() {
+        this.storeHistory(this.state.history);
+    }
 
     onPressHandler = (key: string) => {
-        const { input } = this.state;
+        const { input, history } = this.state;
         if (!input && specialButtons.includes(key)) {
             Alert.alert('Enter expression at first');
             return;
@@ -92,8 +97,8 @@ export default class CalculatorCCScreen extends React.Component<CalculatorCCScre
                             ...this.state,
                             result: calculateInputData(evalForInput(input)),
                             input: calculateInputData(evalForInput(input)),
+                            history: history.concat([input + '=' + calculateInputData(evalForInput(input))]),
                         });
-                        // setHistory(history.concat([input + '=' + calculateInputData(evalForInput(input))]));
                     } catch (error: any) {
                         Alert.alert(error.message);
                         setTimeout(() => {

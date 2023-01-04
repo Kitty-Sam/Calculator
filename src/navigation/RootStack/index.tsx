@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -7,6 +7,7 @@ import { HistoryStack } from '~navigation/HistoryStack';
 import { Header } from '~components/Header/Header';
 import { ThemeContext } from '~context/ThemeContext';
 import { useTheme } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const enum RootNavigationName {
     CALCULATOR_STACK = 'Calculator',
@@ -21,8 +22,20 @@ export type RootStackParamList = {
 const Root = createNativeStackNavigator<RootStackParamList>();
 
 export const RootStack = () => {
-    const { toggleTheme } = useContext(ThemeContext);
+    const { theme, toggleTheme } = useContext(ThemeContext);
     const { colors } = useTheme();
+
+    const storeTheme = async (value: string) => {
+        try {
+            await AsyncStorage.setItem('theme', JSON.stringify(value));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        storeTheme(theme);
+    }, [theme]);
 
     return (
         <Root.Navigator>
