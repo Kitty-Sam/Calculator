@@ -12,6 +12,6 @@ export const styles = StyleSheet.create<DisplayStyleType>({
         justifyContent: 'center',
     },
     text: {
-        fontSize: 24,
+        fontSize: 32,
     },
 });

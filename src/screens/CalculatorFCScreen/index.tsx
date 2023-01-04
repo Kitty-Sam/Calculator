@@ -1,12 +1,13 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 
-import { Alert, View } from 'react-native';
+import { Alert, DevSettings, View } from 'react-native';
 import { styles } from './style';
 import { Display } from '~components/Display';
 import { KeyPad } from '~components/KeyPad';
 import { calculateInputData, evalForInput } from '~utils/Calculate/calculate';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { HistoryContext } from '~context/HistoryContext';
+import { specialButtons } from '~constants/buttonsLabels/buttonsLabels';
 
 export const CalculatorFCScreen = () => {
     const [input, setInput] = useState('');
@@ -46,6 +47,10 @@ export const CalculatorFCScreen = () => {
 
     const onPressHandler = useCallback(
         (key: string) => {
+            if (!input && specialButtons.includes(key)) {
+                Alert.alert('Enter expression at first');
+                return;
+            }
             if (!input) {
                 setInput(key);
             }
@@ -74,12 +79,18 @@ export const CalculatorFCScreen = () => {
                             setInput(calculateInputData(evalForInput(input)));
                         } catch (error: any) {
                             Alert.alert(error.message);
+                            setTimeout(() => {
+                                DevSettings.reload();
+                            }, 2000);
                         }
                         break;
                     }
                     case '+/-':
-                        setInput((lastKey) => {
-                            return lastKey.slice(0, -1) + key;
+                        if (!input) {
+                            return;
+                        }
+                        setInput((expression) => {
+                            return String(+expression * -1);
                         });
 
                         break;

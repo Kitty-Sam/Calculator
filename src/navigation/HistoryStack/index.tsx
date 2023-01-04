@@ -3,7 +3,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { ThemeContext } from '~context/ThemeContext';
 import { DarkTheme, LightTheme } from '~constants/Theme/Theme';
 import { HistoryFCScreen } from '~screens/HistoryFCScreen';
-import { HistoryCCScreen } from '~screens/HistoryCCScreen';
+import HistoryCCScreen from '~screens/HistoryCCScreen';
 
 export const enum HistoryNavigationName {
     HISTORY_FC = 'History FC',
