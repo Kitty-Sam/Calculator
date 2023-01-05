@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, ScrollView, Text } from 'react-native';
+import { FlatList, Platform, Text } from 'react-native';
 
 import { FAB } from 'react-native-paper';
 import { styles } from '~screens/HistoryCCScreen/style';
@@ -35,7 +35,7 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
 
     getHistory = async () => {
         try {
-            const savedHistory = await AsyncStorage.getItem('history');
+            const savedHistory = await AsyncStorage.getItem('classHistory');
             if (savedHistory) {
                 const resultedHistory = await JSON.parse(savedHistory);
                 this.setState({
@@ -56,6 +56,20 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
     render() {
         return (
             <>
+
+                {this.state.history.length > 0 ? (
+                    <FlatList
+                        contentContainerStyle={styles.block}
+                        data={this.state.history}
+                        renderItem={({ item }) => (
+                            <Text key={Date.now() + item} style={[styles.text, { color: DarkTheme.colors.primary }]}>
+                                {item}
+                            </Text>
+                        )}
+                    />
+                ) : (
+                    <Text style={[styles.text, { color: DarkTheme.colors.primary, margin: 16 }]}>empty history</Text>
+                )}
                 <ScrollView style={styles.block}>
                     {this.state.history.length > 0 ? (
                         this.state.history.map((el) => (

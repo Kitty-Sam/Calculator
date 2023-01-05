@@ -3,12 +3,13 @@ import React from 'react';
 import { Alert, DevSettings, View } from 'react-native';
 import { styles } from './style';
 import { Display } from '~components/Display';
-import { KeyPad } from '~components/KeyPad';
 import { calculateInputData, evalForInput } from '~utils/Calculate/calculate';
 import { HistoryContext } from '~context/HistoryContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { specialButtons } from '~constants/buttonsLabels/buttonsLabels';
 import { CalculatorCCScreenPropsType, CalculatorStateType } from '~screens/CalculatorCCScreen/type';
+import KeyPadClass from '~components/KeyPadClass';
+
 
 export default class CalculatorCCScreen extends React.Component<CalculatorCCScreenPropsType, CalculatorStateType> {
     constructor(props: CalculatorCCScreenPropsType) {
@@ -23,7 +24,7 @@ export default class CalculatorCCScreen extends React.Component<CalculatorCCScre
 
     storeHistory = async (value: string[]) => {
         try {
-            await AsyncStorage.setItem('history', JSON.stringify(value));
+            await AsyncStorage.setItem('classHistory', JSON.stringify(value));
         } catch (error) {
             console.log(error);
         }
@@ -31,7 +32,7 @@ export default class CalculatorCCScreen extends React.Component<CalculatorCCScre
 
     getHistory = async () => {
         try {
-            const savedHistory = await AsyncStorage.getItem('history');
+            const savedHistory = await AsyncStorage.getItem('classHistory');
             if (savedHistory) {
                 const resultedHistory = await JSON.parse(savedHistory);
                 this.setState({ ...this.state, history: resultedHistory });
@@ -121,7 +122,7 @@ export default class CalculatorCCScreen extends React.Component<CalculatorCCScre
         return (
             <View style={styles.rootContainer}>
                 <Display input={this.state.input} result={this.state.result} isEqual={this.state.isEqual} />
-                <KeyPad onPressHandler={this.onPressHandler} />
+                <KeyPadClass onPressHandler={this.onPressHandler} />
             </View>
         );
     }

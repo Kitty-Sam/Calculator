@@ -19,7 +19,7 @@ const App = () => {
                 const resultedTheme = await JSON.parse(savedTheme);
                 setTheme(resultedTheme);
             } else {
-                return [];
+                return THEMES.light;
             }
         } catch (error) {
             console.log(error);
@@ -28,7 +28,7 @@ const App = () => {
 
     useEffect(() => {
         getTheme();
-    });
+    }, []);
 
     const toggleTheme = () => {
         setTheme(theme === THEMES.dark ? THEMES.light : THEMES.dark);
