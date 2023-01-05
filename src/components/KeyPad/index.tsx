@@ -1,16 +1,13 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { Row } from '~components/Row';
 import { Column } from '~components/Column';
 import { View } from 'react-native';
 import { leftButtonsLabels, rightButtonsLabels } from '~constants/buttonsLabels/buttonsLabels';
 import { styles } from './style';
 import { Button } from '~components/Button';
+import { KeyPadType } from '~components/KeyPad/type';
 
-export type KeyPadType = {
-    onPressHandler: any;
-};
-
-export const KeyPad: FC<KeyPadType> = ({ onPressHandler }) => {
+export const KeyPad: FC<KeyPadType> = memo(({ onPressHandler }) => {
     return (
         <View style={styles.rootContainer}>
             <Row>
@@ -39,4 +36,4 @@ export const KeyPad: FC<KeyPadType> = ({ onPressHandler }) => {
             </Row>
         </View>
     );
-};
+});

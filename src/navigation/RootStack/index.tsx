@@ -8,16 +8,12 @@ import { Header } from '~components/Header/Header';
 import { ThemeContext } from '~context/ThemeContext';
 import { useTheme } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RootStackParamList } from '~navigation/RootStack/type';
 
 export const enum RootNavigationName {
     CALCULATOR_STACK = 'Calculator',
     HISTORY_STACK = 'History',
 }
-
-export type RootStackParamList = {
-    [RootNavigationName.CALCULATOR_STACK]: undefined;
-    [RootNavigationName.HISTORY_STACK]: undefined;
-};
 
 const Root = createNativeStackNavigator<RootStackParamList>();
 

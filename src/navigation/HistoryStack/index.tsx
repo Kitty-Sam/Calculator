@@ -4,16 +4,12 @@ import { ThemeContext } from '~context/ThemeContext';
 import { DarkTheme, LightTheme } from '~constants/Theme/Theme';
 import { HistoryFCScreen } from '~screens/HistoryFCScreen';
 import HistoryCCScreen from '~screens/HistoryCCScreen';
+import { HistoryStackParamList } from '~navigation/HistoryStack/type';
 
 export const enum HistoryNavigationName {
     HISTORY_FC = 'History FC',
     HISTORY_CC = 'History CC',
 }
-
-export type HistoryStackParamList = {
-    [HistoryNavigationName.HISTORY_CC]: undefined;
-    [HistoryNavigationName.HISTORY_FC]: undefined;
-};
 
 const History = createMaterialTopTabNavigator<HistoryStackParamList>();
 

@@ -2,8 +2,7 @@ import React, { FC } from 'react';
 import { Text } from 'react-native';
 import { styles } from '~components/Header/style';
 import { useTheme } from '@react-navigation/native';
-
-export type HeaderPropsType = { header: string };
+import { HeaderPropsType } from '~components/Header/type';
 
 export const Header: FC<HeaderPropsType> = ({ header }) => {
     const { colors } = useTheme();

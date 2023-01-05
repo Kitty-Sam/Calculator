@@ -4,16 +4,12 @@ import { ThemeContext } from '~context/ThemeContext';
 import { DarkTheme, LightTheme } from '~constants/Theme/Theme';
 import { CalculatorFCScreen } from '~screens/CalculatorFCScreen';
 import CalculatorCCScreen from '~screens/CalculatorCCScreen';
+import { CalculatorStackParamList } from '~navigation/CalculatorStack/type';
 
 export const enum CalculatorNavigationName {
     CALCULATOR_FC = 'Calculator FC',
     CALCULATOR_CC = 'Calculator CC',
 }
-
-export type CalculatorStackParamList = {
-    [CalculatorNavigationName.CALCULATOR_FC]: undefined;
-    [CalculatorNavigationName.CALCULATOR_CC]: undefined;
-};
 
 const Calculator = createMaterialTopTabNavigator<CalculatorStackParamList>();
 

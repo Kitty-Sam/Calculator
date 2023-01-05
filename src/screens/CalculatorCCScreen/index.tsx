@@ -8,15 +8,7 @@ import { calculateInputData, evalForInput } from '~utils/Calculate/calculate';
 import { HistoryContext } from '~context/HistoryContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { specialButtons } from '~constants/buttonsLabels/buttonsLabels';
-
-export type CalculatorStateType = {
-    input: string;
-    result: string;
-    isEqual: boolean;
-    history: string[];
-};
-
-export type CalculatorCCScreenPropsType = {};
+import { CalculatorCCScreenPropsType, CalculatorStateType } from '~screens/CalculatorCCScreen/type';
 
 export default class CalculatorCCScreen extends React.Component<CalculatorCCScreenPropsType, CalculatorStateType> {
     constructor(props: CalculatorCCScreenPropsType) {

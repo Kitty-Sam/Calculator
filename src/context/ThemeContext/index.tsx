@@ -5,7 +5,10 @@ export const THEMES = {
     light: 'light',
 };
 
-export const ThemeContext = createContext({
+export const ThemeContext = createContext<{
+    theme: string;
+    toggleTheme: () => void;
+}>({
     theme: THEMES.light,
     toggleTheme: () => {},
 });

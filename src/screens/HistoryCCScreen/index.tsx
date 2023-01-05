@@ -4,12 +4,8 @@ import { Platform, ScrollView, Text } from 'react-native';
 import { FAB } from 'react-native-paper';
 import { styles } from '~screens/HistoryCCScreen/style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-export type HistoryStateType = {
-    history: string[];
-};
-
-export type HistoryCCScreenPropsType = {};
+import { HistoryCCScreenPropsType, HistoryStateType } from '~screens/HistoryCCScreen/type';
+import { DarkTheme } from '~constants/Theme/Theme';
 
 export default class HistoryCCScreen extends React.Component<HistoryCCScreenPropsType, HistoryStateType> {
     constructor(props: HistoryCCScreenPropsType) {
@@ -63,12 +59,12 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
                 <ScrollView style={styles.block}>
                     {this.state.history.length > 0 ? (
                         this.state.history.map((el) => (
-                            <Text key={Date.now() + el} style={[styles.text, { color: 'red' }]}>
+                            <Text key={Date.now() + el} style={[styles.text, { color: DarkTheme.colors.primary }]}>
                                 {el}
                             </Text>
                         ))
                     ) : (
-                        <Text style={[styles.text, { color: 'red' }]}>empty history</Text>
+                        <Text style={[styles.text, { color: DarkTheme.colors.primary }]}>empty history</Text>
                     )}
                 </ScrollView>
                 <FAB icon={'trash-can-outline'} style={styles.fab} size="medium" onPress={this.clearHistory} />
