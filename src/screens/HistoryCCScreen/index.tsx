@@ -35,7 +35,7 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
 
     getHistory = async () => {
         try {
-            const savedHistory = await AsyncStorage.getItem('history');
+            const savedHistory = await AsyncStorage.getItem('classHistory');
             if (savedHistory) {
                 const resultedHistory = await JSON.parse(savedHistory);
                 this.setState({

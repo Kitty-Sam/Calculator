@@ -1,14 +1,14 @@
-const parse = (string) => {
+export const parse = (string) => {
     // eslint-disable-next-line @typescript-eslint/no-implied-eval
     return Function(`'use strict'; return (${string})`)();
 };
 
 export const evalForInput = (expression) => (Math.round(parse(expression) * 1000) / 1000).toString();
 
-const add = (x, y) => x + y;
-const sub = (x, y) => x - y;
-const mul = (x, y) => x * y;
-const div = (x, y) => x / y;
+export const add = (x, y) => x + y;
+export const sub = (x, y) => x - y;
+export const mul = (x, y) => x * y;
+export const div = (x, y) => x / y;
 
 const Command = function (execute, undo, left, right) {
     this.execute = execute;
