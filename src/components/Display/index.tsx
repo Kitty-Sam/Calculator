@@ -4,12 +4,7 @@ import { Text, View } from 'react-native';
 import { styles } from '~components/Display/style';
 import { ErrorBoundary } from '~components/ErrorBoundary';
 import { useTheme } from '@react-navigation/native';
-
-export type DisplayPropsType = {
-    input: string;
-    result: string;
-    isEqual: boolean;
-};
+import { DisplayPropsType } from '~components/Display/type';
 
 export const Display: FC<DisplayPropsType> = ({ input, result, isEqual }) => {
     const { colors } = useTheme();

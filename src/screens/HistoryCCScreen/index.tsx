@@ -1,15 +1,11 @@
 import React from 'react';
-import { Platform, ScrollView, Text } from 'react-native';
+import { FlatList, Platform, Text } from 'react-native';
 
 import { FAB } from 'react-native-paper';
 import { styles } from '~screens/HistoryCCScreen/style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-export type HistoryStateType = {
-    history: string[];
-};
-
-export type HistoryCCScreenPropsType = {};
+import { HistoryCCScreenPropsType, HistoryStateType } from '~screens/HistoryCCScreen/type';
+import { DarkTheme } from '~constants/Theme/Theme';
 
 export default class HistoryCCScreen extends React.Component<HistoryCCScreenPropsType, HistoryStateType> {
     constructor(props: HistoryCCScreenPropsType) {
@@ -60,17 +56,19 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
     render() {
         return (
             <>
-                <ScrollView style={styles.block}>
-                    {this.state.history.length > 0 ? (
-                        this.state.history.map((el) => (
-                            <Text key={Date.now() + el} style={[styles.text, { color: 'red' }]}>
-                                {el}
+                {this.state.history.length > 0 ? (
+                    <FlatList
+                        contentContainerStyle={styles.block}
+                        data={this.state.history}
+                        renderItem={({ item }) => (
+                            <Text key={Date.now() + item} style={[styles.text, { color: DarkTheme.colors.primary }]}>
+                                {item}
                             </Text>
-                        ))
-                    ) : (
-                        <Text style={[styles.text, { color: 'red' }]}>empty history</Text>
-                    )}
-                </ScrollView>
+                        )}
+                    />
+                ) : (
+                    <Text style={[styles.text, { color: DarkTheme.colors.primary }]}>empty history</Text>
+                )}
                 <FAB icon={'trash-can-outline'} style={styles.fab} size="medium" onPress={this.clearHistory} />
             </>
         );

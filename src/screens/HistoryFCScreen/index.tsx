@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Platform, ScrollView, Text } from 'react-native';
+import { FlatList, Platform, Text } from 'react-native';
 import { FAB } from 'react-native-paper';
 import { styles } from '~screens/HistoryFCScreen/style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -44,17 +44,19 @@ export const HistoryFCScreen = () => {
 
     return (
         <>
-            <ScrollView style={styles.block}>
-                {history.length > 0 ? (
-                    history.map((el) => (
-                        <Text key={Date.now() + el} style={[styles.text, { color: colors.border }]}>
-                            {el}
+            {history.length > 0 ? (
+                <FlatList
+                    contentContainerStyle={styles.block}
+                    data={history}
+                    renderItem={({ item }) => (
+                        <Text key={Date.now() + item} style={[styles.text, { color: colors.border }]}>
+                            {item}
                         </Text>
-                    ))
-                ) : (
-                    <Text style={[styles.text, { color: colors.border }]}>empty history</Text>
-                )}
-            </ScrollView>
+                    )}
+                />
+            ) : (
+                <Text style={[styles.text, { color: colors.border }]}>empty history</Text>
+            )}
             <FAB icon={'trash-can-outline'} style={styles.fab} size="medium" onPress={clearHistory} />
         </>
     );
