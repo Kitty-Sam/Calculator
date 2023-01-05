@@ -24,7 +24,7 @@ export default class DisplayClass extends React.Component<DisplayClassPropsType,
                         <></>
                     )}
                     {!this.props.input ? (
-                        <Text style={[styles.text, { color: DarkTheme.colors.primary }]}>{result}</Text>
+                        <Text style={[styles.text, { color: DarkTheme.colors.primary, margin: 16 }]}>{result}</Text>
                     ) : (
                         <></>
                     )}
