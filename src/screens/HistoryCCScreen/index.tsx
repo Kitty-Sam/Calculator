@@ -56,7 +56,6 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
     render() {
         return (
             <>
-
                 {this.state.history.length > 0 ? (
                     <FlatList
                         contentContainerStyle={styles.block}
@@ -70,17 +69,6 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
                 ) : (
                     <Text style={[styles.text, { color: DarkTheme.colors.primary, margin: 16 }]}>empty history</Text>
                 )}
-                <ScrollView style={styles.block}>
-                    {this.state.history.length > 0 ? (
-                        this.state.history.map((el) => (
-                            <Text key={Date.now() + el} style={[styles.text, { color: DarkTheme.colors.primary }]}>
-                                {el}
-                            </Text>
-                        ))
-                    ) : (
-                        <Text style={[styles.text, { color: DarkTheme.colors.primary }]}>empty history</Text>
-                    )}
-                </ScrollView>
                 <FAB icon={'trash-can-outline'} style={styles.fab} size="medium" onPress={this.clearHistory} />
             </>
         );

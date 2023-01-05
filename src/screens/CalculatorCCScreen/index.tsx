@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Alert, DevSettings, View } from 'react-native';
 import { styles } from './style';
 import { Display } from '~components/Display';
@@ -9,7 +8,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { specialButtons } from '~constants/buttonsLabels/buttonsLabels';
 import { CalculatorCCScreenPropsType, CalculatorStateType } from '~screens/CalculatorCCScreen/type';
 import KeyPadClass from '~components/KeyPadClass';
-
 
 export default class CalculatorCCScreen extends React.Component<CalculatorCCScreenPropsType, CalculatorStateType> {
     constructor(props: CalculatorCCScreenPropsType) {
