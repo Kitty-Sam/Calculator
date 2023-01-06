@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -29,9 +29,10 @@ export const RootStack = () => {
         }
     };
 
-    useEffect(() => {
-        storeTheme(theme);
-    }, [theme]);
+    const toggleAndStore = () => {
+        toggleTheme();
+        storeTheme(theme === 'light' ? 'dark' : 'light');
+    };
 
     return (
         <Root.Navigator>
@@ -56,7 +57,7 @@ export const RootStack = () => {
                 component={HistoryStack}
                 options={({}) => ({
                     headerRight: () => (
-                        <Icon name={'moon-outline'} size={24} onPress={toggleTheme} color={colors.text} />
+                        <Icon name={'moon-outline'} size={24} onPress={toggleAndStore} color={colors.text} />
                     ),
                     headerBackTitle: '',
                     headerTitleAlign: 'center',

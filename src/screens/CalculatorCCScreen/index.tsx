@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, DevSettings, View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { styles } from './style';
 import { Display } from '~components/Display';
 import { calculateInputData, evalForInput } from '~utils/Calculate/calculate';
@@ -75,10 +75,18 @@ export default class CalculatorCCScreen extends React.Component<CalculatorCCScre
                     break;
                 }
                 case 'del': {
-                    this.setState({
-                        ...this.state,
-                        input: input.slice(0, input.length - 1),
-                    });
+                    if (input.length === 1) {
+                        this.setState({
+                            ...this.state,
+                            input: '',
+                            result: '',
+                        });
+                    } else {
+                        this.setState({
+                            ...this.state,
+                            input: input.slice(0, input.length - 1),
+                        });
+                    }
                     break;
                 }
                 case '=': {
@@ -91,15 +99,30 @@ export default class CalculatorCCScreen extends React.Component<CalculatorCCScre
                             history: history.concat([input + '=' + calculateInputData(evalForInput(input))]),
                         });
                     } catch (error: any) {
-                        Alert.alert(error.message);
-                        setTimeout(() => {
-                            DevSettings.reload();
-                        }, 2000);
+                        Alert.alert('something goes wrong');
+                        this.setState({
+                            ...this.state,
+                            input: '',
+                            result: '',
+                            isEqual: false,
+                        });
                     }
                     break;
                 }
                 case '+/-':
+                    if (!input) {
+                        return;
+                    }
                     const changeOperator = (expression: string) => {
+                        if (expression === '0') {
+                            return '-0';
+                        }
+                        if (expression.includes('(' || ')')) {
+                            return (
+                                expression.slice(0, expression.length - 1) +
+                                String(+expression[expression.length - 1] * -1)
+                            );
+                        }
                         return String(+expression * -1);
                     };
                     this.setState({

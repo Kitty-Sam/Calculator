@@ -124,16 +124,15 @@ export const calculateInputData = (input) => {
     if (firstItem.includes('(')) throw new Error('something goes wrong');
     if (dataInArray.length === 1) {
         for (let i = 0; i < firstItem.length; i++) {
-            if (typeof firstItem[i] === 'number') array.push(firstItem[i]);
+            if (typeof firstItem[i] === 'number' && !isNaN(firstItem[i])) array.push(firstItem[i]);
             else {
                 array.push(calculator.execute(operations(array.pop(), array.pop(), firstItem[i])));
-
-                if (array[array.length - 1] === Infinity) {
-                    throw new Error('something goes wrong');
-                }
             }
         }
     } else {
+        if (dataInArray[0] === 'I' || dataInArray[0] === 'N' || dataInArray[1] === 'I') {
+            throw new Error('something goes wrong');
+        }
         if (dataInArray[dataInArray.length - 1] >= 0) {
             return dataInArray.reduce((previousValue, currentValue) => previousValue + currentValue, '');
         }

@@ -1,72 +1,48 @@
 import { add, calculateInputData, div, evalForInput, mul, sub } from '~utils/Calculate/calculate';
 
-describe('Calculator tests: add (less than 10)', () => {
+describe('Calculator tests: add', () => {
     test('adding 1 + 2 should return 3', () => {
         expect(add(1, 2)).toBe(3);
     });
-});
-
-describe('Calculator tests: add (bigger than 1000)', () => {
     test('adding 1000 + 200 should return 1200', () => {
         expect(add(1000, 200)).toBe(1200);
     });
-});
-
-describe('Calculator tests: add (error)', () => {
     test('adding 2 + 2 should not return 5', () => {
         expect(add(2, 2)).not.toBe(5);
     });
 });
 
-describe('Calculator tests: sub (less than 10)', () => {
+describe('Calculator tests: sub', () => {
     test('subtracting 2 from 10 should return 8', () => {
         expect(sub(10, 2)).toBe(8);
     });
-});
-
-describe('Calculator tests: sub (bigger than 1000)', () => {
     test('subtracting 2000 from 10 should return 1990', () => {
         expect(sub(2000, 10)).toBe(1990);
     });
-});
-
-describe('Calculator tests: sub error', () => {
     test('subtracting 3 from 7 should return 6', () => {
         expect(sub(7, 3)).not.toBe(6);
     });
 });
 
-describe('Calculator tests: multiply (less than 10)', () => {
+describe('Calculator tests: multiply', () => {
     test('multiplying 2 and 1.5 should return 3', () => {
         expect(mul(2, 1.5)).toBe(3);
     });
-});
-
-describe('Calculator tests: multiply (bigger than 1000)', () => {
     test('multiplying 1000 and 1.3 should return 1300', () => {
         expect(mul(1000, 1.3)).toBe(1300);
     });
-});
-
-describe('Calculator tests: multiply error', () => {
     test('multiplying 2 and 2 should not return 5', () => {
         expect(mul(2, 2)).not.toBe(5);
     });
 });
 
-describe('Calculator tests: divide (less than 10)', () => {
+describe('Calculator tests: divide ', () => {
     test('dividing 8 and 2 should return 4', () => {
         expect(div(8, 2)).toBe(4);
     });
-});
-
-describe('Calculator tests: divide (bigger than 1000)', () => {
     test('dividing 3000 and 2 should return 1500', () => {
         expect(div(3000, 2)).toBe(1500);
     });
-});
-
-describe('Calculator tests: divide error', () => {
     test('dividing 2 and 2 should return 2', () => {
         expect(div(2, 2)).not.toBe(2);
     });

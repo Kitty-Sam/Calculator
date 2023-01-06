@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 
-import { Alert, DevSettings, View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { styles } from './style';
 import { Display } from '~components/Display';
 import { KeyPad } from '~components/KeyPad';
@@ -68,7 +68,12 @@ export const CalculatorFCScreen = () => {
                         break;
                     }
                     case 'del': {
-                        setInput(input.slice(0, input.length - 1));
+                        if (input.length === 1) {
+                            setInput('');
+                            setResult('');
+                        } else {
+                            setInput(input.slice(0, input.length - 1));
+                        }
                         break;
                     }
                     case '=': {
@@ -78,10 +83,10 @@ export const CalculatorFCScreen = () => {
                             setHistory(history.concat([input + '=' + calculateInputData(evalForInput(input))]));
                             setInput(calculateInputData(evalForInput(input)));
                         } catch (error: any) {
-                            Alert.alert(error.message);
-                            setTimeout(() => {
-                                DevSettings.reload();
-                            }, 2000);
+                            Alert.alert('something goes wrong');
+                            setIsEqual(false);
+                            setInput('');
+                            setResult('');
                         }
                         break;
                     }
@@ -90,6 +95,15 @@ export const CalculatorFCScreen = () => {
                             return;
                         }
                         setInput((expression) => {
+                            if (expression.includes('(' || ')')) {
+                                return (
+                                    expression.slice(0, expression.length - 1) +
+                                    String(+expression[expression.length - 1] * -1)
+                                );
+                            }
+                            if (expression === '0') {
+                                return '-0';
+                            }
                             return String(+expression * -1);
                         });
 
