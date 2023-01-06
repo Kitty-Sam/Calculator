@@ -11,12 +11,11 @@ export const Display: FC<DisplayPropsType> = ({ input, result, isEqual }) => {
     return (
         <ErrorBoundary>
             <View style={styles.container}>
-                {!isEqual && isEqual !== undefined ? (
+                {!isEqual && isEqual !== undefined && (
                     <Text style={[styles.text, { color: colors.border }]}>{input}</Text>
-                ) : (
-                    <></>
                 )}
-                {!input ? <Text style={[styles.text, { color: colors.border }]}>{result}</Text> : <></>}
+
+                {!input && <Text style={[styles.text, { color: colors.border }]}>{result}</Text>}
             </View>
         </ErrorBoundary>
     );

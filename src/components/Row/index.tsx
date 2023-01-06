@@ -1,8 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { View } from 'react-native';
 import { styles } from '~components/Row/style';
-import { RowPropsType } from '~components/Row/type';
 
-export const Row: FC<RowPropsType> = ({ children }) => {
+export const Row: FC<PropsWithChildren> = ({ children }) => {
     return <View style={styles.container}>{children}</View>;
 };

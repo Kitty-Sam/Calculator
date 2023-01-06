@@ -1,8 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { View } from 'react-native';
 import { styles } from '~components/Column/style';
-import { ColumnPropsType } from '~components/Column/type';
 
-export const Column: FC<ColumnPropsType> = ({ children }) => {
+export const Column: FC<PropsWithChildren> = ({ children }) => {
     return <View style={styles.container}>{children}</View>;
 };

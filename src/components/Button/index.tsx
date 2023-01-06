@@ -19,9 +19,13 @@ export const Button: FC<ButtonPropsType> = ({ onPress, title, shape, type }) => 
         }
     };
 
+    const onButtonPress = () => {
+        onPress(title);
+    };
+
     return (
         <TouchableOpacity
-            onPress={() => onPress(title)}
+            onPress={onButtonPress}
             style={[
                 styles.buttonContainer,
                 {

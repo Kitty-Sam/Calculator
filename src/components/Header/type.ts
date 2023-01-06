@@ -1,3 +1,3 @@
 export interface HeaderPropsType {
-    header: string;
+    title: string;
 }

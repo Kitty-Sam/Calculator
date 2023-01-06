@@ -18,15 +18,11 @@ export default class DisplayClass extends React.Component<DisplayClassPropsType,
         return (
             <ErrorBoundary>
                 <View style={styles.container}>
-                    {!isEqual && isEqual !== undefined ? (
+                    {!isEqual && isEqual !== undefined && (
                         <Text style={[styles.text, { color: DarkTheme.colors.primary }]}>{input}</Text>
-                    ) : (
-                        <></>
                     )}
-                    {!this.props.input ? (
+                    {!this.props.input && (
                         <Text style={[styles.text, { color: DarkTheme.colors.primary, margin: 16 }]}>{result}</Text>
-                    ) : (
-                        <></>
                     )}
                 </View>
             </ErrorBoundary>

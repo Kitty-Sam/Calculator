@@ -49,7 +49,7 @@ export const RootStack = () => {
                         />
                     ),
                     headerTitleAlign: 'center',
-                    headerTitle: () => <Header header={'Calculator'} />,
+                    headerTitle: () => <Header title={'Calculator'} />,
                 })}
             />
             <Root.Screen
@@ -61,7 +61,7 @@ export const RootStack = () => {
                     ),
                     headerBackTitle: '',
                     headerTitleAlign: 'center',
-                    headerTitle: () => <Header header={'History'} />,
+                    headerTitle: () => <Header title={'History'} />,
                 })}
             />
         </Root.Navigator>

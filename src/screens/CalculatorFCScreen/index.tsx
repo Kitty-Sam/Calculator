@@ -95,6 +95,12 @@ export const CalculatorFCScreen = () => {
                             return;
                         }
                         setInput((expression) => {
+                            if (expression.includes('+' || '-' || '/' || '*')) {
+                                return (
+                                    String(+expression.slice(0, expression.length - 1)) +
+                                    expression[expression.length - 1]
+                                );
+                            }
                             if (expression.includes('(' || ')')) {
                                 return (
                                     expression.slice(0, expression.length - 1) +

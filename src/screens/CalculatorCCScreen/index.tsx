@@ -123,6 +123,11 @@ export default class CalculatorCCScreen extends React.Component<CalculatorCCScre
                                 String(+expression[expression.length - 1] * -1)
                             );
                         }
+                        if (expression.includes('+' || '-' || '/' || '*')) {
+                            return (
+                                String(+expression.slice(0, expression.length - 1)) + expression[expression.length - 1]
+                            );
+                        }
                         return String(+expression * -1);
                     };
                     this.setState({

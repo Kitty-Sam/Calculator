@@ -1,3 +1,9 @@
+export type ItemsType = {
+    shape: string;
+    title: string;
+    type: string | undefined;
+};
+
 export const leftButtonsLabels = [
     { title: '+/-', shape: 'small' },
     { title: '(', shape: 'small' },
@@ -18,8 +24,8 @@ export const leftButtonsLabels = [
     { title: '.', shape: 'ordinary' },
 ];
 
-export const rightButtonsLabels = [
-    { title: '%', shape: 'small' },
+export const rightButtonsLabels: ItemsType[] = [
+    { title: '%', shape: 'small', type: undefined },
     { title: '*', shape: 'ordinary', type: 'operator' },
     { title: '-', shape: 'ordinary', type: 'operator' },
     { title: '+', shape: 'tall', type: 'operator' },
