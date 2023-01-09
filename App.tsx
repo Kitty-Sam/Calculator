@@ -1,16 +1,21 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { StatusBar, View } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { RootStack } from '~navigation/RootStack';
 import { DarkTheme, LightTheme } from '~constants/Theme/Theme';
-import { ThemeContext, THEMES } from '~context/ThemeContext';
 import { HistoryContext } from '~context/HistoryContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ThemeContext, THEMES } from '~context/ThemeContext';
+import { RootStack } from '~navigation/RootStack';
 
 const App = () => {
     const [theme, setTheme] = useState(THEMES.light);
     const [history, setHistory] = useState<string[]>([]);
+
+    useEffect(() => {
+        SplashScreen.hide();
+    }, []);
 
     const getTheme = async () => {
         try {
