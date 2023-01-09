@@ -1,10 +1,10 @@
+import { useTheme } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { Text, View } from 'react-native';
 
 import { styles } from '~components/Display/style';
-import { ErrorBoundary } from '~components/ErrorBoundary';
-import { useTheme } from '@react-navigation/native';
 import { DisplayPropsType } from '~components/Display/type';
+import { ErrorBoundary } from '~components/ErrorBoundary';
 
 export const Display: FC<DisplayPropsType> = ({ input, result, isEqual }) => {
     const { colors } = useTheme();

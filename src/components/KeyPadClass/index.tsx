@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
-import { Row } from '~components/Row';
-import { Column } from '~components/Column';
 import { FlatList, View } from 'react-native';
-import { ItemsType, leftButtonsLabels, rightButtonsLabels } from '~constants/buttonsLabels/buttonsLabels';
-import { styles } from './style';
+
 import { Button } from '~components/Button';
+import { Column } from '~components/Column';
+import { Row } from '~components/Row';
+import { ItemsType, leftButtonsLabels, rightButtonsLabels } from '~constants/buttonsLabels/buttonsLabels';
+
+import { styles } from './style';
 
 export interface KeyPadClassPropsType {
     onPressHandler: (text: string) => void;

@@ -1,13 +1,15 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 import { Alert, View } from 'react-native';
-import { styles } from './style';
+
 import { Display } from '~components/Display';
-import { calculateInputData, evalForInput } from '~utils/Calculate/calculate';
-import { HistoryContext } from '~context/HistoryContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { specialButtons } from '~constants/buttonsLabels/buttonsLabels';
-import { CalculatorCCScreenPropsType, CalculatorStateType } from '~screens/CalculatorCCScreen/type';
 import KeyPadClass from '~components/KeyPadClass';
+import { specialButtons } from '~constants/buttonsLabels/buttonsLabels';
+import { HistoryContext } from '~context/HistoryContext';
+import { CalculatorCCScreenPropsType, CalculatorStateType } from '~screens/CalculatorCCScreen/type';
+import { calculateInputData, evalForInput } from '~utils/Calculate/calculate';
+
+import { styles } from './style';
 
 export default class CalculatorCCScreen extends React.Component<CalculatorCCScreenPropsType, CalculatorStateType> {
     constructor(props: CalculatorCCScreenPropsType) {

@@ -3172,6 +3172,11 @@
     "semver" "^6.3.0"
     "string.prototype.matchall" "^4.0.8"
 
+"eslint-plugin-simple-import-sort@^8.0.0":
+  "integrity" "sha512-bXgJQ+lqhtQBCuWY/FUWdB27j4+lqcvXv5rUARkzbeWLwea+S5eBZEQrhnO+WgX3ZoJHVj0cn943iyXwByHHQw=="
+  "resolved" "https://registry.npmjs.org/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-8.0.0.tgz"
+  "version" "8.0.0"
+
 "eslint-scope@^5.0.0", "eslint-scope@^5.1.1":
   "integrity" "sha512-2NxwbF/hZ0KpepYN0cNbo+FN6XoK7GaHlQhgx/hIZl6Va0bF45RQOOwhLIy8lQDbuCiadSLCBnH2CFYquit5bw=="
   "resolved" "https://registry.npmjs.org/eslint-scope/-/eslint-scope-5.1.1.tgz"

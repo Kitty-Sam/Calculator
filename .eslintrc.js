@@ -19,7 +19,12 @@ module.exports = {
     rules: {
         'import/no-named-as-default': 0,
         'import/no-unresolved': 'off',
-        'import/extensions': 'off'
+        'import/extensions': 'off',
+        'simple-import-sort/imports': 'error',
+        'simple-import-sort/exports': 'error',
+        'import/first': 'error',
+        'import/newline-after-import': 'error',
+        'import/no-duplicates': 'error',
     },
-    plugins: ['@typescript-eslint'],
+    plugins: ['@typescript-eslint', 'simple-import-sort', 'import'],
 };

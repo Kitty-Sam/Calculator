@@ -1,9 +1,9 @@
+import { useTheme } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-import { ButtonPropsType } from '~components/Button/type';
 import { styles } from '~components/Button/style';
-import { useTheme } from '@react-navigation/native';
+import { ButtonPropsType } from '~components/Button/type';
 
 export const Button: FC<ButtonPropsType> = ({ onPress, title, shape, type }) => {
     const { colors } = useTheme();

@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from 'react';
-import { FlatList, Platform, Text } from 'react-native';
-import { FAB } from 'react-native-paper';
-import { styles } from '~screens/HistoryFCScreen/style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '@react-navigation/native';
+import React, { useContext, useEffect } from 'react';
+import { FlatList, Text } from 'react-native';
+import { FAB } from 'react-native-paper';
+
 import { HistoryContext } from '~context/HistoryContext';
+import { styles } from '~screens/HistoryFCScreen/style';
 
 export const HistoryFCScreen = () => {
     const { colors } = useTheme();
@@ -24,17 +25,13 @@ export const HistoryFCScreen = () => {
         }
     };
 
-    const clearHistory = async () => {
-        const asyncStorageKeys = await AsyncStorage.getAllKeys();
-        if (asyncStorageKeys.length > 0) {
-            if (Platform.OS === 'android') {
-                await AsyncStorage.clear();
-                setHistory([]);
-            }
-            if (Platform.OS === 'ios') {
-                await AsyncStorage.multiRemove(asyncStorageKeys);
-                setHistory([]);
-            }
+    const removeItemFromStorage = async (key: string) => {
+        try {
+            await AsyncStorage.removeItem(key);
+            setHistory([]);
+            return true;
+        } catch (exception) {
+            return false;
         }
     };
 
@@ -57,7 +54,12 @@ export const HistoryFCScreen = () => {
             ) : (
                 <Text style={[styles.text, { color: colors.border, margin: 16 }]}>empty history</Text>
             )}
-            <FAB icon={'trash-can-outline'} style={styles.fab} size="medium" onPress={clearHistory} />
+            <FAB
+                icon={'trash-can-outline'}
+                style={styles.fab}
+                size="medium"
+                onPress={() => removeItemFromStorage('history')}
+            />
         </>
     );
 };

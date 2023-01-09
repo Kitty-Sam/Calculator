@@ -1,11 +1,11 @@
-import React from 'react';
-import { FlatList, Platform, Text } from 'react-native';
-
-import { FAB } from 'react-native-paper';
-import { styles } from '~screens/HistoryCCScreen/style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { HistoryCCScreenPropsType, HistoryStateType } from '~screens/HistoryCCScreen/type';
+import React from 'react';
+import { FlatList, Text } from 'react-native';
+import { FAB } from 'react-native-paper';
+
 import { DarkTheme } from '~constants/Theme/Theme';
+import { styles } from '~screens/HistoryCCScreen/style';
+import { HistoryCCScreenPropsType, HistoryStateType } from '~screens/HistoryCCScreen/type';
 
 export default class HistoryCCScreen extends React.Component<HistoryCCScreenPropsType, HistoryStateType> {
     constructor(props: HistoryCCScreenPropsType) {
@@ -15,21 +15,15 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
         };
     }
 
-    clearHistory = async () => {
-        const asyncStorageKeys = await AsyncStorage.getAllKeys();
-        if (asyncStorageKeys.length > 0) {
-            if (Platform.OS === 'android') {
-                await AsyncStorage.clear();
-                this.setState({
-                    history: [],
-                });
-            }
-            if (Platform.OS === 'ios') {
-                await AsyncStorage.multiRemove(asyncStorageKeys);
-                this.setState({
-                    history: [],
-                });
-            }
+    removeItemFromStorage = async (key: string) => {
+        try {
+            await AsyncStorage.removeItem(key);
+            this.setState({
+                history: [],
+            });
+            return true;
+        } catch (exception) {
+            return false;
         }
     };
 
@@ -69,7 +63,12 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
                 ) : (
                     <Text style={[styles.text, { color: DarkTheme.colors.primary, margin: 16 }]}>empty history</Text>
                 )}
-                <FAB icon={'trash-can-outline'} style={styles.fab} size="medium" onPress={this.clearHistory} />
+                <FAB
+                    icon={'trash-can-outline'}
+                    style={styles.fab}
+                    size="medium"
+                    onPress={() => this.removeItemFromStorage('classHistory')}
+                />
             </>
         );
     }

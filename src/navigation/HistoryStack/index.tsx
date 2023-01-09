@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { ThemeContext } from '~context/ThemeContext';
+import React, { useContext } from 'react';
+
 import { DarkTheme, LightTheme } from '~constants/Theme/Theme';
-import { HistoryFCScreen } from '~screens/HistoryFCScreen';
-import HistoryCCScreen from '~screens/HistoryCCScreen';
+import { ThemeContext } from '~context/ThemeContext';
 import { HistoryStackParamList } from '~navigation/HistoryStack/type';
+import HistoryCCScreen from '~screens/HistoryCCScreen';
+import { HistoryFCScreen } from '~screens/HistoryFCScreen';
 
 export const enum HistoryNavigationName {
     HISTORY_FC = 'History FC',

@@ -1,13 +1,14 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-
 import { Alert, View } from 'react-native';
-import { styles } from './style';
+
 import { Display } from '~components/Display';
 import { KeyPad } from '~components/KeyPad';
-import { calculateInputData, evalForInput } from '~utils/Calculate/calculate';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { HistoryContext } from '~context/HistoryContext';
 import { specialButtons } from '~constants/buttonsLabels/buttonsLabels';
+import { HistoryContext } from '~context/HistoryContext';
+import { calculateInputData, evalForInput } from '~utils/Calculate/calculate';
+
+import { styles } from './style';
 
 export const CalculatorFCScreen = () => {
     const [input, setInput] = useState('');

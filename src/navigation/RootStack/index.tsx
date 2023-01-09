@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import React, { useContext } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { CalculatorStack } from '~navigation/CalculatorStack';
-import { HistoryStack } from '~navigation/HistoryStack';
+
 import { Header } from '~components/Header/Header';
 import { ThemeContext } from '~context/ThemeContext';
-import { useTheme } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CalculatorStack } from '~navigation/CalculatorStack';
+import { HistoryStack } from '~navigation/HistoryStack';
 import { RootStackParamList } from '~navigation/RootStack/type';
 
 export const enum RootNavigationName {
