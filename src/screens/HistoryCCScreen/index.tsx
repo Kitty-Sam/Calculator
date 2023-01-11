@@ -15,7 +15,7 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
         };
     }
 
-    removeItemFromStorage = async (key: string) => {
+    removeItemFromStorage = (key: string) => async () => {
         try {
             await AsyncStorage.removeItem(key);
             this.setState({
@@ -67,7 +67,7 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
                     icon={'trash-can-outline'}
                     style={styles.fab}
                     size="medium"
-                    onPress={() => this.removeItemFromStorage('classHistory')}
+                    onPress={this.removeItemFromStorage('classHistory')}
                 />
             </>
         );

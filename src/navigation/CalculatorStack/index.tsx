@@ -7,7 +7,7 @@ import { CalculatorStackParamList } from '~navigation/CalculatorStack/type';
 import CalculatorCCScreen from '~screens/CalculatorCCScreen';
 import { CalculatorFCScreen } from '~screens/CalculatorFCScreen';
 
-export const enum CalculatorNavigationName {
+export enum CalculatorNavigationName {
     CALCULATOR_FC = 'Calculator FC',
     CALCULATOR_CC = 'Calculator CC',
 }

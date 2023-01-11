@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, ScrollView, View } from 'react-native';
 
 import { Button } from '~components/Button';
 import { Column } from '~components/Column';
@@ -8,6 +8,8 @@ import { Row } from '~components/Row';
 import { ItemsType, leftButtonsLabels, rightButtonsLabels } from '~constants/buttonsLabels/buttonsLabels';
 
 import { styles } from './style';
+
+const numberOfRows = 6;
 
 export const KeyPad: FC<KeyPadType> = memo(({ onPressHandler }) => {
     const renderItem = ({ item: { shape, title, type } }: { item: ItemsType }) => (
@@ -18,10 +20,14 @@ export const KeyPad: FC<KeyPadType> = memo(({ onPressHandler }) => {
         <View style={styles.rootContainer}>
             <Row>
                 <View style={styles.leftButtonsContainer}>
-                    {leftButtonsLabels.map(({ title, shape, type }) => (
-                        <Button key={title} title={title} shape={shape} onPress={onPressHandler} type={type} />
-                    ))}
+                    <FlatList
+                        numColumns={numberOfRows}
+                        data={leftButtonsLabels}
+                        renderItem={renderItem}
+                        columnWrapperStyle={styles.columnWrapper}
+                    />
                 </View>
+                <ScrollView></ScrollView>
                 <Column>
                     <FlatList data={rightButtonsLabels} renderItem={renderItem} />
                 </Column>

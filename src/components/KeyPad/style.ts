@@ -3,6 +3,7 @@ import { Dimensions, StyleSheet, ViewStyle } from 'react-native';
 export type KeyPadStyleType = {
     rootContainer: ViewStyle;
     leftButtonsContainer: ViewStyle;
+    columnWrapper: ViewStyle;
 };
 
 const { height } = Dimensions.get('window');
@@ -15,8 +16,10 @@ export const styles = StyleSheet.create<KeyPadStyleType>({
     },
     leftButtonsContainer: {
         flexDirection: 'row',
+        width: 250,
+    },
+    columnWrapper: {
         flexWrap: 'wrap',
         justifyContent: 'space-around',
-        width: 250,
     },
 });

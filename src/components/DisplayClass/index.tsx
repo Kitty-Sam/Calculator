@@ -10,19 +10,33 @@ export interface DisplayClassPropsType {
     result: string;
     isEqual: boolean;
 }
-export interface DisplayClassStateType {}
 
-export default class DisplayClass extends React.Component<DisplayClassPropsType, DisplayClassStateType> {
+export default class DisplayClass extends React.Component<DisplayClassPropsType> {
+    input: string;
+
+    result: string;
+
+    isEqual: boolean;
+
+    constructor(props: DisplayClassPropsType) {
+        super(props);
+        const { input, isEqual, result } = props;
+        this.input = input;
+        this.isEqual = isEqual;
+        this.result = result;
+    }
+
     render() {
-        const { input, result, isEqual } = this.props;
         return (
             <ErrorBoundary>
                 <View style={styles.container}>
-                    {!isEqual && isEqual !== undefined && (
-                        <Text style={[styles.text, { color: DarkTheme.colors.primary }]}>{input}</Text>
+                    {!this.isEqual && this.isEqual !== undefined && (
+                        <Text style={[styles.text, { color: DarkTheme.colors.primary }]}>{this.input}</Text>
                     )}
                     {!this.props.input && (
-                        <Text style={[styles.text, { color: DarkTheme.colors.primary, margin: 16 }]}>{result}</Text>
+                        <Text style={[styles.text, { color: DarkTheme.colors.primary, margin: 16 }]}>
+                            {this.result}
+                        </Text>
                     )}
                 </View>
             </ErrorBoundary>

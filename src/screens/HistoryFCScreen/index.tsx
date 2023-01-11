@@ -25,7 +25,7 @@ export const HistoryFCScreen = () => {
         }
     };
 
-    const removeItemFromStorage = async (key: string) => {
+    const removeItemFromStorage = (key: string) => async () => {
         try {
             await AsyncStorage.removeItem(key);
             setHistory([]);
@@ -58,7 +58,7 @@ export const HistoryFCScreen = () => {
                 icon={'trash-can-outline'}
                 style={styles.fab}
                 size="medium"
-                onPress={() => removeItemFromStorage('history')}
+                onPress={removeItemFromStorage('history')}
             />
         </>
     );
