@@ -12,20 +12,32 @@ export interface KeyPadClassPropsType {
     onPressHandler: (text: string) => void;
 }
 
+const numberOfRows = 6;
+
 export default class KeyPadClass extends PureComponent<KeyPadClassPropsType> {
+    onPressHandler: (text: string) => void;
+
+    constructor(props: KeyPadClassPropsType) {
+        super(props);
+        const { onPressHandler } = props;
+        this.onPressHandler = onPressHandler;
+    }
+
     renderItem = ({ item: { shape, title, type } }: { item: ItemsType }) => (
-        <Button onPress={this.props.onPressHandler} title={title} shape={shape} type={type} />
+        <Button onPress={this.onPressHandler} title={title} shape={shape} type={type} />
     );
 
     render() {
-        const { onPressHandler } = this.props;
         return (
             <View style={styles.rootContainer}>
                 <Row>
                     <View style={styles.leftButtonsContainer}>
-                        {leftButtonsLabels.map(({ title, shape, type }) => (
-                            <Button key={title} title={title} shape={shape} onPress={onPressHandler} type={type} />
-                        ))}
+                        <FlatList
+                            numColumns={numberOfRows}
+                            data={leftButtonsLabels}
+                            renderItem={this.renderItem}
+                            columnWrapperStyle={styles.columnWrapper}
+                        />
                     </View>
                     <Column>
                         <FlatList data={rightButtonsLabels} renderItem={this.renderItem} />

@@ -7,7 +7,7 @@ import { HistoryStackParamList } from '~navigation/HistoryStack/type';
 import HistoryCCScreen from '~screens/HistoryCCScreen';
 import { HistoryFCScreen } from '~screens/HistoryFCScreen';
 
-export const enum HistoryNavigationName {
+export enum HistoryNavigationName {
     HISTORY_FC = 'History FC',
     HISTORY_CC = 'History CC',
 }

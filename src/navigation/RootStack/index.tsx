@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useTheme } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useContext } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -10,7 +10,7 @@ import { CalculatorStack } from '~navigation/CalculatorStack';
 import { HistoryStack } from '~navigation/HistoryStack';
 import { RootStackParamList } from '~navigation/RootStack/type';
 
-export const enum RootNavigationName {
+export enum RootNavigationName {
     CALCULATOR_STACK = 'Calculator',
     HISTORY_STACK = 'History',
 }
@@ -18,6 +18,8 @@ export const enum RootNavigationName {
 const Root = createNativeStackNavigator<RootStackParamList>();
 
 export const RootStack = () => {
+    const navigation = useNavigation<any>();
+
     const { theme, toggleTheme } = useContext(ThemeContext);
     const { colors } = useTheme();
 
@@ -34,19 +36,18 @@ export const RootStack = () => {
         storeTheme(theme === 'light' ? 'dark' : 'light');
     };
 
+    const onHistoryStackPress = () => {
+        navigation.navigate(RootNavigationName.HISTORY_STACK);
+    };
+
     return (
         <Root.Navigator>
             <Root.Screen
                 name={RootNavigationName.CALCULATOR_STACK}
                 component={CalculatorStack}
-                options={({ navigation }) => ({
+                options={() => ({
                     headerRight: () => (
-                        <Icon
-                            name={'list'}
-                            size={24}
-                            color={colors.text}
-                            onPress={() => navigation.navigate(RootNavigationName.HISTORY_STACK)}
-                        />
+                        <Icon name={'list'} size={24} color={colors.text} onPress={onHistoryStackPress} />
                     ),
                     headerTitleAlign: 'center',
                     headerTitle: () => <Header title={'Calculator'} />,
