@@ -61,7 +61,9 @@ export default class HistoryCCScreen extends React.Component<HistoryCCScreenProp
                         )}
                     />
                 ) : (
-                    <Text style={[styles.text, { color: DarkTheme.colors.primary, margin: 16 }]}>empty history</Text>
+                    <Text style={[styles.text, styles.additionalText, { color: DarkTheme.colors.primary }]}>
+                        empty history
+                    </Text>
                 )}
                 <FAB
                     icon={'trash-can-outline'}

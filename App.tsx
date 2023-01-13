@@ -9,7 +9,9 @@ import { HistoryContext } from '~context/HistoryContext';
 import { ThemeContext, THEMES } from '~context/ThemeContext';
 import { RootStack } from '~navigation/RootStack';
 
-const App = () => {
+import { styles } from './style';
+
+export const App = () => {
     const [theme, setTheme] = useState(THEMES.light);
     const [history, setHistory] = useState<string[]>([]);
 
@@ -43,7 +45,7 @@ const App = () => {
         <HistoryContext.Provider value={{ history, setHistory }}>
             <ThemeContext.Provider value={{ theme, toggleTheme }}>
                 <NavigationContainer theme={theme === THEMES.light ? LightTheme : DarkTheme}>
-                    <View style={{ flex: 1 }}>
+                    <View style={styles.root}>
                         <StatusBar />
                         <RootStack />
                     </View>
@@ -52,5 +54,3 @@ const App = () => {
         </HistoryContext.Provider>
     );
 };
-
-export default App;

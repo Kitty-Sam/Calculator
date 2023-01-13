@@ -52,7 +52,7 @@ export const HistoryFCScreen = () => {
                     )}
                 />
             ) : (
-                <Text style={[styles.text, { color: colors.border, margin: 16 }]}>empty history</Text>
+                <Text style={[styles.text, styles.additionalText, { color: colors.border }]}>empty history</Text>
             )}
             <FAB
                 icon={'trash-can-outline'}

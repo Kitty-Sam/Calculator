@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import { FlatList, ScrollView, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import { Button } from '~components/Button';
 import { Column } from '~components/Column';
@@ -27,7 +27,6 @@ export const KeyPad: FC<KeyPadType> = memo(({ onPressHandler }) => {
                         columnWrapperStyle={styles.columnWrapper}
                     />
                 </View>
-                <ScrollView></ScrollView>
                 <Column>
                     <FlatList data={rightButtonsLabels} renderItem={renderItem} />
                 </Column>

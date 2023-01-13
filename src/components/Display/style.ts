@@ -3,6 +3,7 @@ import { Dimensions, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 export type DisplayStyleType = {
     container: ViewStyle;
     text: TextStyle;
+    additionalText: TextStyle;
 };
 
 const { height } = Dimensions.get('window');
@@ -15,5 +16,8 @@ export const styles = StyleSheet.create<DisplayStyleType>({
     },
     text: {
         fontSize: 32,
+    },
+    additionalText: {
+        margin: 16,
     },
 });

@@ -34,9 +34,7 @@ export default class DisplayClass extends React.Component<DisplayClassPropsType>
                         <Text style={[styles.text, { color: DarkTheme.colors.primary }]}>{this.input}</Text>
                     )}
                     {!this.props.input && (
-                        <Text style={[styles.text, { color: DarkTheme.colors.primary, margin: 16 }]}>
-                            {this.result}
-                        </Text>
+                        <Text style={[styles.text, { color: DarkTheme.colors.primary }]}>{this.result}</Text>
                     )}
                 </View>
             </ErrorBoundary>
