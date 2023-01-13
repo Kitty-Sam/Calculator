@@ -3,6 +3,7 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 export type HistoryFCScreenStyleType = {
     fab: ViewStyle;
     text: TextStyle;
+    additionalText: TextStyle;
     block: ViewStyle;
 };
 
@@ -18,6 +19,7 @@ export const styles = StyleSheet.create<HistoryFCScreenStyleType>({
         fontSize: 18,
         fontWeight: '400',
     },
+    additionalText: { margin: 16 },
     block: {
         margin: 16,
     },
