@@ -1,13 +1,23 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import { Dimensions, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export type DisplayStyleType = {
-  container: ViewStyle;
+    container: ViewStyle;
+    text: TextStyle;
+    additionalText: TextStyle;
 };
 
+const { height } = Dimensions.get('window');
+
 export const styles = StyleSheet.create<DisplayStyleType>({
-  container: {
-    height: '45%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        height: height * 0.15,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    text: {
+        fontSize: 32,
+    },
+    additionalText: {
+        margin: 16,
+    },
 });

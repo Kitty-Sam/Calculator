@@ -3,6 +3,8 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+//splash screen
+#import "RNSplashScreen.h"
 
 #import <React/RCTAppSetupUtils.h>
 
@@ -51,6 +53,9 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   } else {
     rootView.backgroundColor = [UIColor whiteColor];
   }
+
+   // Set the splash screen to show by default.
+  [RNSplashScreen show];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];

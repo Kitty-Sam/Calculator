@@ -1,27 +1,56 @@
-import React from 'react';
-import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
-
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { RootStack } from './src/RootStack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { StatusBar, View } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
+
+import { DarkTheme, LightTheme } from '~constants/Theme/Theme';
+import { HistoryContext } from '~context/HistoryContext';
+import { ThemeContext, THEMES } from '~context/ThemeContext';
+import { RootStack } from '~navigation/RootStack';
+
+import { styles } from './style';
 
 export const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+    const [theme, setTheme] = useState(THEMES.light);
+    const [history, setHistory] = useState<string[]>([]);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex: 1,
-  };
+    useEffect(() => {
+        SplashScreen.hide();
+    }, []);
 
-  return (
-    <NavigationContainer>
-      <SafeAreaView style={backgroundStyle}>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
-        <RootStack />
-      </SafeAreaView>
-    </NavigationContainer>
-  );
+    const getTheme = async () => {
+        try {
+            const savedTheme = await AsyncStorage.getItem('theme');
+            if (savedTheme) {
+                const resultedTheme = await JSON.parse(savedTheme);
+                setTheme(resultedTheme);
+            } else {
+                return THEMES.light;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getTheme();
+    }, []);
+
+    const toggleTheme = () => {
+        setTheme(theme === THEMES.dark ? THEMES.light : THEMES.dark);
+    };
+
+    return (
+        <HistoryContext.Provider value={{ history, setHistory }}>
+            <ThemeContext.Provider value={{ theme, toggleTheme }}>
+                <NavigationContainer theme={theme === THEMES.light ? LightTheme : DarkTheme}>
+                    <View style={styles.root}>
+                        <StatusBar />
+                        <RootStack />
+                    </View>
+                </NavigationContainer>
+            </ThemeContext.Provider>
+        </HistoryContext.Provider>
+    );
 };
